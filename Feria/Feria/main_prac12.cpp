@@ -107,6 +107,9 @@ CTexture text11;// estrellas
 CTexture text12;//cadenas
 CTexture text13;//silla amarilla
 CTexture text25;
+CTexture sky;
+CTexture sky2;
+CTexture sky3;
 
 CTexture tree;
 
@@ -122,11 +125,13 @@ CFiguras fig10;
 CFiguras fig11;
 CFiguras cen;
 
+
 //Figuras de 3D Studio
-CModel kit;
-CModel llanta;
-CModel casita;
-CModel oldhouse;
+CModel quiosco;
+CModel banca;
+CModel faro;
+CModel jardinera;
+CModel palomitas;
 
 //Animación del coche
 float angRot = 0.0;
@@ -190,61 +195,104 @@ void ciudad ()
 		
 
 		glPushMatrix(); //Camino1
-			glTranslatef(35.0,0.0,0.0);
-			glScalef(60,0.1,7);
+			glTranslatef(37.5,0.0,0.0);
+			glScalef(55,0.1,7);
 			glDisable(GL_LIGHTING);
 			fig3.prisma2(text4.GLindex, 0);
 			glEnable(GL_LIGHTING);
 		glPopMatrix();
 
 		glPushMatrix(); //Camino2
-			glTranslatef(-35.0,0.0,0.0);
-			glScalef(60,0.1,7);
+			glTranslatef(-37.5,0.0,0.0);
+			glScalef(55,0.1,7);
 			glDisable(GL_LIGHTING);
 			fig3.prisma2(text4.GLindex, 0);
 			glEnable(GL_LIGHTING);
 		glPopMatrix();
 		
+		glPushMatrix(); //Camino3
+		glTranslatef(0.0, 0.0, 36.0);
+		glRotatef(90.0, 0.0, 1.0, 0.0);
+		glScalef(58.0, 0.1, 7);
+		glDisable(GL_LIGHTING);
+		fig3.prisma2(text4.GLindex, 0);
+		glEnable(GL_LIGHTING);
+		glPopMatrix();
+
+		glPushMatrix(); //Camino4
+		glTranslatef(0.0, 0.0, -36.0);
+		glRotatef(90.0, 0.0, 1.0, 0.0);
+		glScalef(58, 0.1, 7);
+		glDisable(GL_LIGHTING);
+		fig3.prisma2(text4.GLindex, 0);
+		glEnable(GL_LIGHTING);
+		glPopMatrix();
 
 
 		glPushMatrix(); //Pasto
-			glTranslatef(0.0,0.0,-40.0);
-			glScalef(130,0.1,73);
+			glTranslatef(-37.5,0.0,-34.0);
+			glScalef(55,0.1,61.0);
 			glDisable(GL_LIGHTING);
 			fig4.prisma2(text5.GLindex, 0);
 			glEnable(GL_LIGHTING);
 		glPopMatrix();
 
 		glPushMatrix(); //Pasto
-			glTranslatef(0.0,0.0,40.0);
-			glScalef(130,0.1,73);
+		glTranslatef(-37.5, 0.0, 34.0);
+		glScalef(55, 0.1, 61.0);
+		glDisable(GL_LIGHTING);
+		fig4.prisma2(text5.GLindex, 0);
+		glEnable(GL_LIGHTING);
+		glPopMatrix();
+
+		glPushMatrix(); //Pasto
+			glTranslatef(37.5,0.0,34.0);
+			glScalef(55,0.1,61.0);
 			glDisable(GL_LIGHTING);
 			fig4.prisma2(text5.GLindex, 0);
 			glEnable(GL_LIGHTING);
 		glPopMatrix();
 
-	/*	glPushMatrix(); //Casa01
-			glTranslatef(0.0,3.0,7.0);
-			glRotatef(90,1,0,0);
-			glRotatef(180,0,0,1);
-			glScalef(6,5.0,6);
-			glDisable(GL_LIGHTING);
-			fig5.prisma2(text6.GLindex, 0);
-			glEnable(GL_LIGHTING);
+		glPushMatrix(); //Pasto
+		glTranslatef(37.5, 0.0, -34.0);
+		glScalef(55, 0.1, 61.0);
+		glDisable(GL_LIGHTING);
+		fig4.prisma2(text5.GLindex, 0);
+		glEnable(GL_LIGHTING);
 		glPopMatrix();
 
-		glPushMatrix(); //Casa01
-			glTranslatef(0.0,3.0,-7.0);
-			glRotatef(90,1,0,0);
-			//glRotatef(180,0,0,1);
-			glScalef(6,5.0,6);
-			glDisable(GL_LIGHTING);
-			fig5.prisma2(text6.GLindex, 0);
-			glEnable(GL_LIGHTING);
-		glPopMatrix();*/
+		glPushMatrix(); //Pasto
+		glTranslatef(6.7, 0.0, -36.0);
+		glScalef(6.6, 0.1, 58.0);
+		glDisable(GL_LIGHTING);
+		fig4.prisma2(text5.GLindex, 0);
+		glEnable(GL_LIGHTING);
+		glPopMatrix();
+
+		glPushMatrix(); //Pasto
+		glTranslatef(-6.7, 0.0, -36.0);
+		glScalef(6.6, 0.1, 58.0);
+		glDisable(GL_LIGHTING);
+		fig4.prisma2(text5.GLindex, 0);
+		glEnable(GL_LIGHTING);
+		glPopMatrix();
+
+		glPushMatrix(); //Pasto
+		glTranslatef(6.7, 0.0, 36.0);
+		glScalef(6.6, 0.1, 58.0);
+		glDisable(GL_LIGHTING);
+		fig4.prisma2(text5.GLindex, 0);
+		glEnable(GL_LIGHTING);
+		glPopMatrix();
 
 
-		
+		glPushMatrix(); //Pasto
+		glTranslatef(-6.7, 0.0, 36.0);
+		glScalef(6.6, 0.1, 58.0);
+		glDisable(GL_LIGHTING);
+		fig4.prisma2(text5.GLindex, 0);
+		glEnable(GL_LIGHTING);
+		glPopMatrix();
 }
 
 void arbol_alpha()
@@ -1976,6 +2024,20 @@ void InitGL ( GLvoid )     // Inicializamos parametros
     //glBlendFunc(GL_SRC_ALPHA,GL_ONE);			// Set The Blending Function For Translucency
     //glColor4f(1.0f, 1.0f, 1.0f, 0.5); 
     
+
+	sky.LoadTGA("texp/sky.tga");
+	sky.BuildGLTexture();
+	sky.ReleaseImage();
+
+	sky2.LoadTGA("texp/sky2.tga");
+	sky2.BuildGLTexture();
+	sky2.ReleaseImage();
+
+	sky3.LoadTGA("texp/sky3.tga");
+	sky3.BuildGLTexture();
+	sky3.ReleaseImage();
+
+
     text1.LoadBMP("01.bmp");
 	text1.BuildGLTexture();
 	text1.ReleaseImage();
@@ -2025,17 +2087,17 @@ void InitGL ( GLvoid )     // Inicializamos parametros
 	text25.BuildGLTexture();
 	text25.ReleaseImage();
 
-	kit._3dsLoad("kitt.3ds");	
+	palomitas._3dsLoad("palomitasC.3ds");	
 	//kit.VertexNormals();
 	
-	llanta._3dsLoad("k_rueda.3ds");
+	banca._3dsLoad("bancasC.3ds");
 
-	casita._3dsLoad("Dollshouse.3ds");
+	jardinera._3dsLoad("jardineraC.3ds");
 
-	oldhouse._3dsLoad("oldhouse/oldhouse.3ds");
-	oldhouse.LoadTextureImages();
-	oldhouse.GLIniTextures();
-	oldhouse.ReleaseTextureImages();
+	quiosco._3dsLoad("quioscoC.3ds");
+	quiosco.LoadTextureImages();
+	quiosco.GLIniTextures();
+	quiosco.ReleaseTextureImages();
 	
 	objCamera.Position_Camera(0,2.5f,3, 0,2.5f,0, 0, 1, 0);
 
@@ -2130,7 +2192,7 @@ void display ( void )   // Creamos la funcion donde se dibuja
 			glPushMatrix(); //Creamos cielo
 				glDisable(GL_LIGHTING);
 				glTranslatef(0,60,0);
-				fig1.skybox(130.0, 130.0, 130.0,text1.GLindex);
+				fig1.skybox(130.0, 130.0, 130.0,sky.GLindex);
 				glEnable(GL_LIGHTING);
 			glPopMatrix();
 
@@ -2147,26 +2209,44 @@ void display ( void )   // Creamos la funcion donde se dibuja
 			glPopMatrix();
 
 			glPushMatrix();
-				glTranslatef(-30.0, 0.0, -40.0);
-				glScalef(1.0, 1.0, 1.0);
+				glTranslatef(-20.0, 0.0, -30.0);
+				glRotatef(90.0, 0.0, 1.0, 0.0);
+				glScalef(1.0, 2.0, 2.0);
 				montana();
 			glPopMatrix();
 
-
-			/*glPushMatrix(); //Casa M0delo 3ds
-				glTranslatef(-12.0,0.0,-9.0);
-				glScalef(0.3,0.3,0.3);
-				casita.GLrender(NULL,_SHADED, 1);
+			glPushMatrix(); //quiosco
+			glTranslatef(0.0, 2.0, 0.0);
+			glRotatef(90.0, 0.0, 1.0, 0.0);
+			//glScalef(1.0, 2.0, 2.0);
+			quiosco.GLrender(NULL, _SHADED, 1);
 			glPopMatrix();
 
-			glPushMatrix(); //Casa M0delo 3ds
-				glTranslatef(-32.0,0.0,-9.0);
-				glScalef(0.7,0.7,0.7);
-				oldhouse.GLrender(NULL,_SHADED, 1);
-			glPopMatrix();*/
+			glPushMatrix();//palomaiz
+			glTranslatef(10.0, 0.95, -7.0);
+			glRotatef(45.0, 0.0, 1.0, 0.0);
+			glRotatef(5.0, 1.0, 0.0, 0.0);
+			glScalef(2.0, 2.0, 2.0);
+			palomitas.GLrender(NULL, _SHADED, 1);
+			glPopMatrix();
+
+
+			glPushMatrix(); //quiosco
+			glTranslatef(-5.0, 0.5, 30.0);
+			glRotatef(0.0, 0.0, 1.0, 0.0);
+			//glScalef(1.0, 2.0, 2.0);
+			jardinera.GLrender(NULL, _SHADED, 1);
+			glPopMatrix();
+
+			glPushMatrix(); //quiosco
+			glTranslatef(0.0, 2.0, 0.0);
+			glRotatef(90.0, 0.0, 1.0, 0.0);
+			//glScalef(1.0, 2.0, 2.0);
+			faro.GLrender(NULL, _SHADED, 1);
+			glPopMatrix();
 
 			glPushMatrix(); //Centro
-				glScalef(10,0.1,7);
+				glScalef(2,0.1,2);
 				glDisable(GL_LIGHTING);
 				cen.prisma(0.1,10.0, 7, centro.GLindex);
 				glEnable(GL_LIGHTING);
@@ -2177,10 +2257,15 @@ void display ( void )   // Creamos la funcion donde se dibuja
 				glTranslatef(-30, 0, 10);
 				arbol_alpha();
 			glPopMatrix();
-
 			glColor3f(1.0,1.0,1.0);
-
 		glPopMatrix(); 
+
+		glPushMatrix();//arbol 2
+			glTranslatef(30, 0, -10);
+			arbol_alpha();
+		glPopMatrix();
+	/*		glColor3f(1.0, 1.0, 1.0);
+		glPopMatrix();*/
 
 	glPopMatrix();
 	glDisable(GL_TEXTURE_2D);
@@ -2206,79 +2291,7 @@ void animacion()
 	if(fig3.text_der<0)
 		fig3.text_der=1;
 
-	//Movimiento del coche
-	if(g_fanimacion)
-	{
-		if(g_avanza)
-		{
-			movKitZ +=1.0;
-			rotTires -= 10;
-			if(movKitZ>130)
-				g_avanza = false;
-		}
-		else
-		{
-			movKitZ -=1.0;
-			rotTires += 10;
-			if(movKitZ<0)
-				g_avanza = true;
-		}
-	}
-
-	if(circuito)
-	{
-		if(recorrido1)
-		{
-			movKitZ ++;
-			if(movKitZ>155)
-			{
-				recorrido1 = false;
-				recorrido2 = true;
-			}
-		}
-		if(recorrido2)
-		{
-			rotKit = 90;
-			movKitX++;
-			if(movKitX > 125)
-			{
-				recorrido2 = false;
-				recorrido3 = true;
-				
-			}
-		}
-		if(recorrido3)
-		{
-			rotKit = 180;
-			movKitZ --;
-			if(movKitZ<-155)
-			{
-				recorrido3 = false;
-				recorrido4 = true;
-			}
-		}
-		if(recorrido4)
-		{
-			rotKit = 270;
-			movKitX --;
-			if(movKitX<0)
-			{
-				recorrido4 = false;
-				recorrido5 = true;
-			}
-		}
-		if(recorrido5)
-		{
-			rotKit = 0;
-			movKitZ ++;
-			if(movKitZ>0)
-			{
-				recorrido5 = false;
-				recorrido1 = true;
-			}
-		}
-	}
-
+	
 
 	//Movimiento del monito
 	if (play)
